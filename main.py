@@ -60,4 +60,11 @@ async def kick(ctx, member: disnake.Member, *, reason="Rules broker"):
     await member.kick(reason = reason)
     await ctx.message.delete()
 
+@bot.slash_command()
+@commands.has_permissions(ban_members = True, administrator = True)
+async def kick(ctx, member: disnake.Member, *, reason="Rules broker"):
+    await ctx.send(f"Moderator {ctx.author.mention} baned user {member.mention}", delete_after=300)
+    await member.ban(reason = reason)
+    await ctx.message.delete()
+
 bot.run(data["token"])

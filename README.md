@@ -5,7 +5,7 @@ Also I can describe this bot like all in one, all items for comforting gameplay
 ![Logo](https://i.morioh.com/210715/ff989a40.webp)
 
 # Commands
-Prefix `.`, so to use commands you should write .kick, in future I`m planning to make it from `/`
+Prefix `.`, so to use commands you should write .kick, in future Im planning to make it from `/`
 
 
 - [x] Kick 

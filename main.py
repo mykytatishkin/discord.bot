@@ -46,7 +46,7 @@ async def on_message(message):
                 await message.delete()
                 await message.channel.send(f"{message.author.mention } such repliks is forbidden, Glory to Ukraine!")
 
-@bot.command()
+@bot.slash_command()
 @commands.has_permissions(kick_members = True, administrator = True)
 async def kick(ctx, member: disnake.Member, *, reason="Rules broker"):
     await ctx.send(f"Moderator {ctx.author.mention} kicked user {member.mention}", delete_after=300)

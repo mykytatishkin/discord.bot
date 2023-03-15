@@ -53,18 +53,30 @@ async def on_message(message):
                 await message.delete()
                 await message.channel.send(f"{message.author.mention } such repliks is forbidden, Glory to Ukraine!")
 
-@bot.slash_command()
+@bot.slash_command(brief="If someone will break some rules or will try to crash server, he will get kick")
 @commands.has_permissions(kick_members = True, administrator = True)
 async def kick(ctx, member: disnake.Member, *, reason="Rules broker"):
     await ctx.send(f"Moderator {ctx.author.mention} kicked user {member.mention}", delete_after=300)
     await member.kick(reason = reason)
     await ctx.message.delete()
 
-@bot.slash_command()
+@bot.slash_command(aliases="БАН НАХУЙ", brief="If someone will break some rules or will try to crash server, he will get ban" )
 @commands.has_permissions(ban_members = True, administrator = True)
 async def ban(ctx, member: disnake.Member, *, reason="Rules broker"):
     await ctx.send(f"Moderator {ctx.author.mention} baned user {member.mention}", delete_after=300)
     await member.ban(reason = reason)
     await ctx.message.delete()
+
+@bot.event
+async def on_command_error(ctx, error):
+    print(error)
+
+    if isinstance (error, commands.MissingPermissions):
+        await ctx.send(f"{ctx.author} you don`t have such permission")
+    elif isinstance (error, commands.UserInputError):
+        await ctx.send(embed=disnake.Embed(
+            description=f"Correct usage of command: `{ctx.prefix}{ctx.command.name}`({ctx.command.brief})\nExample: {ctx.prefix}{ctx.command.usage}"
+
+        ))
 
 bot.run(data["token"])

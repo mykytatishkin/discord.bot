@@ -5,8 +5,11 @@ import json
 with open('config.json', 'r') as f:
   data = json.load(f)
 
-bot = commands.Bot(command_prefix = ".", help_command = None, intents = disnake.Intents.all() )
+bot = commands.Bot(command_prefix = data["prefix"], help_command = None, intents = disnake.Intents.all() )
 CENSORED_WORDS = ["слава россии", "россия вперед", "россия победит", "хохол", "хохляндия", "украине в срало"]
+
+# Create variable for entering id for channel of turning on Bot
+# And paste it to bot.get_channel(id)
 
 @bot.event 
 async def on_ready():
@@ -16,10 +19,14 @@ async def on_ready():
 
     embed = disnake.Embed (
         title = f"<:disnake:1085542833848594523> Bot in development",
-        description = f"Will be in furute...",
+        description = f"Will be in future...",
         color = 0xffe32e
     )
     await channel.send(embed = embed)
+
+# Create variables for entering ids for channels of functions
+# And paste it to bot.get_channel()
+
 
 @bot.event
 async def on_member_join(member):

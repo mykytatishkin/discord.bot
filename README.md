@@ -1,4 +1,5 @@
-# Discord.bot
+# Discord.bot RustCamp Clan Bot
+![lg](https://media.discordapp.net/attachments/1030004206951747590/1085592524615340072/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png)
 
 ### Bot made on
 - Python             3.10.6

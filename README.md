@@ -6,9 +6,10 @@ Also I can describe this bot like all in one, all items for comforting gameplay
 
 # Commands
 
-[x] Kick 
-[] Players Monitoring
-[] Music System
+- [x] Kick 
+- [ ] Players Monitoring
+- [ ] Music System
+- [ ] Player Join/Left
 
 # Usefull links
 

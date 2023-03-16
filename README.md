@@ -22,6 +22,8 @@ Also, you should install Discord, Disnake by pip `pip install discord`, `pip ins
 - [ ] Players Monitoring
 - [ ] Music System
 - [ ] Player Join/Left
+- [ ] Help Command
+- [ ] Bot status
 
 # Usefull links
 

@@ -23,6 +23,7 @@ async def on_ready():
         color = 0xffe32e
     )
     await channel.send(embed = embed)
+    await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.watching, name="for commands"))
 
 # Create variables for entering ids for channels of functions
 # And paste it to bot.get_channel()
@@ -78,5 +79,18 @@ async def on_command_error(ctx, error):
             description=f"Correct usage of command: `{ctx.prefix}{ctx.command.name}`({ctx.command.brief})\nExample: {ctx.prefix}{ctx.command.usage}"
 
         ))
+
+@bot.event
+async def on_disconnect():
+    print("Bot disconnected")
+
+@bot.event
+async def on_shutdown():
+    print("Bot shutting down...")
+
+@bot.slash_command(name='shutdown', description='Выключает бота')
+async def shutdown(ctx: disnake.ApplicationCommandInteraction):
+    await ctx.response.send_message('Выключаюсь...')
+    await bot.close()
 
 bot.run(data["token"])

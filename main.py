@@ -67,6 +67,11 @@ async def ban(ctx, member: disnake.Member, *, reason="Rules broker"):
     await member.ban(reason = reason)
     await ctx.message.delete()
 
+@bot.command
+async def shutdown (ctx: commands.Context):
+    await ctx.send("Disconnected")
+    await bot.close()
+
 @bot.event
 async def on_command_error(ctx, error):
     print(error)

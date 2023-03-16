@@ -23,7 +23,7 @@ Also, you should install Discord, Disnake by pip `pip install discord`, `pip ins
 - [ ] Music System
 - [ ] Player Join/Left
 - [ ] Help Command
-- [ ] Bot status
+- [x] Bot status
 
 # Usefull links
 

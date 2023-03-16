@@ -82,11 +82,11 @@ async def on_command_error(ctx, error):
 
 @bot.event
 async def on_disconnect():
-    print("{bot.user} disconnected")
+    print(f"{bot.user} disconnected")
 
 @bot.event
 async def on_shutdown():
-    print("{bot.user} shutting down...")
+    print(f"{bot.user} shutting down...")
 
 @bot.slash_command(name='shutdown', description='Turn off bot')
 @commands.has_permissions(administrator=True, view_audit_log=True)

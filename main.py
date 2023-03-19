@@ -1,12 +1,36 @@
+import json
 import disnake
 from disnake.ext import commands
-import json
+from typing import Optional
 
 with open('config.json', 'r') as f:
   data = json.load(f)
 
-bot = commands.Bot(command_prefix = data["prefix"], help_command = None, intents = disnake.Intents.all() )
+bot = commands.Bot(command_prefix = commands.when_mentioned, help_command = None, intents = disnake.Intents.all() )
 CENSORED_WORDS = ["слава россии", "россия вперед", "россия победит", "хохол", "хохляндия", "украине в срало"]
+
+class Confirm(disnake.ui.View):
+    def __init__(self):
+        super().__init__(timeout=10)
+        self.value = Optional[bool]
+
+    @disnake.ui.button(label="Confirm", style=disnake.ButtonStyle.green, emoji="✅")
+    async def confirm(self, button: disnake.ui.button, inter: disnake.CommandInteraction):
+        await inter.send("Confirmation confirmed")
+        self.value = True
+        self.stop()
+
+    @disnake.ui.button(label="Reject", style=disnake.ButtonStyle.red, emoji="❌")
+    async def reject(self, button: disnake.ui.button, inter: disnake.CommandInteraction):
+        await inter.send("Confirmation rejected")
+        self.value = False
+        self.stop()
+
+class LinkToParty(disnake.ui.View):
+    def __init__(self):
+        super().__init__()
+        self.add_item(disnake.ui.button(label="Join to us!", style=disnake.ButtonStyle.url ,url="https://google.com/"))
+
 
 # Create variable for entering id for channel of turning on Bot
 # And paste it to bot.get_channel(id)
@@ -23,7 +47,7 @@ async def on_ready():
         color = 0x03fc03
     )
     await channel.send(embed = embed)
-    await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.watching, name="for commands"))
+    await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.watching, name="for commands "))
 
 # Create variables for entering ids for channels of functions
 # And paste it to bot.get_channel()
@@ -82,7 +106,16 @@ async def on_command_error(ctx, error):
 
 @bot.event
 async def on_disconnect():
+    channel = bot.get_channel(1085514774537830540)
+
     print(f"{bot.user} disconnected")
+    embed = disnake.Embed (
+        title=f"🟡 Connection Lost",
+        description=f"It may be fixed in some time, please contact tech staff.",
+        color=0xfcba03
+    )
+
+    await channel.send(embed = embed)
 
 @bot.event
 async def on_shutdown():
@@ -94,10 +127,24 @@ async def shutdown(ctx: disnake.ApplicationCommandInteraction):
     channel = bot.get_channel(1085514774537830540)
     embed = disnake.Embed (
         title=f"🔴 Now offline",
-        description=f"Contact tech help to know a reason",
+        description=f"Be sure, update coming.",
         color=0xfc1403
     )
     await channel.send(embed = embed)
     await bot.close()
 
+@bot.command(name="party")
+async def ask_party(ctx):
+    view1 = Confirm()
+    view2 = LinkToParty()
+    await ctx.send("A party invatation sended, confirm?", view = view1)
+    await view1.wait()
+
+    if view1.value is None:
+        await ctx.send("You missed invitation!")
+    elif view1.value:
+        await ctx.send("Your link!", veiw=view2)
+    else:
+        await ctx.sent("Try again")
+   
 bot.run(data["token"])

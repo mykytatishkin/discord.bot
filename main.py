@@ -136,4 +136,6 @@ async def help_listener(inter: disnake.MessageInteraction):
     elif inter.component.custom_id == "no_help":
         await inter.response.send_message("Ok")
 
+# DROPDOWN MENU
+
 bot.run(data["token"])

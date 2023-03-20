@@ -9,29 +9,6 @@ with open('config.json', 'r') as f:
 bot = commands.Bot(command_prefix = commands.when_mentioned, help_command = None, intents = disnake.Intents.all() )
 CENSORED_WORDS = ["слава россии", "россия вперед", "россия победит", "хохол", "хохляндия", "украине в срало"]
 
-class Confirm(disnake.ui.View):
-    def __init__(self):
-        super().__init__(timeout=10)
-        self.value = Optional[bool]
-
-    @disnake.ui.button(label="Confirm", style=disnake.ButtonStyle.green, emoji="✅")
-    async def confirm(self, button: disnake.ui.button, inter: disnake.CommandInteraction):
-        await inter.send("Confirmation confirmed")
-        self.value = True
-        self.stop()
-
-    @disnake.ui.button(label="Reject", style=disnake.ButtonStyle.red, emoji="❌")
-    async def reject(self, button: disnake.ui.button, inter: disnake.CommandInteraction):
-        await inter.send("Confirmation rejected")
-        self.value = False
-        self.stop()
-
-class LinkToParty(disnake.ui.View):
-    def __init__(self):
-        super().__init__()
-        self.add_item(disnake.ui.button(label="Join to us!", style=disnake.ButtonStyle.url ,url="https://google.com/"))
-
-
 # Create variable for entering id for channel of turning on Bot
 # And paste it to bot.get_channel(id)
 
@@ -133,18 +110,26 @@ async def shutdown(ctx: disnake.ApplicationCommandInteraction):
     await channel.send(embed = embed)
     await bot.close()
 
-@bot.command(name="party")
-async def ask_party(ctx):
-    view1 = Confirm()
-    view2 = LinkToParty()
-    await ctx.send("A party invatation sended, confirm?", view = view1)
-    await view1.wait()
+@bot.slash_command()
+async def buttons(inter: disnake.ApplicationCommandInteraction):
+    await inter.response.send_message(
+        "Need some help?",
+        components=[
+            disnake.ui.Button(label="Yes", style=disnake.ButtonStyle.success, custom_id="yes_help"),
+            disnake.ui.Button(label="No", style=disnake.ButtonStyle.danger, custom_id="no_help"),    
+        ]
+    )
 
-    if view1.value is None:
-        await ctx.send("You missed invitation!")
-    elif view1.value:
-        await ctx.send("Your link!", veiw=view2)
-    else:
-        await ctx.sent("Try again")
-   
+@bot.listen("on_button_click")
+async def help_listener(inter: disnake.MessageInteraction):
+    if inter.component.custom_id not in ["yes_help","no_help"]:
+        # We filter out any other button presses except
+        # the components we wish to process.
+        return
+    
+    if inter.component.custom_id == "yes_help":
+        await inter.response.send_message("Contact us at https://discord.gg/jZPSbdHpNk")
+    elif inter.component.custom_id == "no_help":
+        await inter.response.send_message("Ok")
+
 bot.run(data["token"])

@@ -110,8 +110,12 @@ async def shutdown(ctx: disnake.ApplicationCommandInteraction):
     await channel.send(embed = embed)
     await bot.close()
 
-@bot.slash_command()
-async def buttons(inter: disnake.ApplicationCommandInteraction):
+#   Create resonse to dm message
+#   With sending information
+#   And create setting for custom messages
+
+@bot.slash_command(name="tech_help", description="if you have some problems, use this command")
+async def tech_help(inter: disnake.ApplicationCommandInteraction):
     await inter.response.send_message(
         "Need some help?",
         components=[

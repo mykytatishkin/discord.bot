@@ -1,4 +1,5 @@
 import json
+import os
 import disnake
 from disnake.ext import commands
 from typing import Optional
@@ -6,44 +7,51 @@ from typing import Optional
 with open('config.json', 'r') as f:
   data = json.load(f)
 
+
 bot = commands.Bot(command_prefix = commands.when_mentioned, help_command = None, intents = disnake.Intents.all() )
+
+
+@bot.command()
+@commands.is_owner()
+async def load(ctx, extension):
+    bot.load_extension(f"cogs.{extension}")
+
+@bot.command()
+@commands.is_owner()
+async def unload(ctx, extension):
+    bot.unload_extension(f"cogs.{extension}")
+
+@bot.command()
+@commands.is_owner()
+async def reload(ctx, extension):
+    bot.reload_extension(f"cogs.{extension}")
+
+bot.load_extension("cogs.Greetings")
+
+# for filename in os.listdir("cogs"):
+#     if filename.endswith(".py"):
+#         bot.load_extension(f"cogs.{filename[:-3]}")
+
 CENSORED_WORDS = ["слава россии", "россия вперед", "россия победит", "хохол", "хохляндия", "украине в срало"]
-
-# Create variable for entering id for channel of turning on Bot
-# And paste it to bot.get_channel(id)
-
-@bot.event 
-async def on_ready():
-    print(f"{bot.user} ready to work")
-    channel = bot.get_channel(1085514774537830540)
-
-
-    embed = disnake.Embed (
-        title = f"🟢 Now online",
-        description = f"Write `/help` to know what I can",
-        color = 0x03fc03
-    )
-    await channel.send(embed = embed)
-    await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.watching, name="for commands "))
 
 # Create variables for entering ids for channels of functions
 # And paste it to bot.get_channel()
 
 
-@bot.event
-async def on_member_join(member):
-    role = await disnake.utils.get(guild_id=member.guild.id, role_id=1085515889950068816)
-    channel = bot.get_channel(1030004206528114694) 
+# @bot.event
+# async def on_member_join(member):
+#     role = await disnake.utils.get(guild_id=member.guild.id, role_id=1085515889950068816)
+#     channel = bot.get_channel(1030004206528114694) 
 
-    embed = disnake.Embed(
-        title="New user",
-        description=f"{member.name}#{member.discriminator}",
-        color=0xffffff
+#     embed = disnake.Embed(
+#         title="New user",
+#         description=f"{member.name}#{member.discriminator}",
+#         color=0xffffff
 
-    )
+#     )
 
-    await member.add_roles(role)
-    await channel.send(embed=embed)
+#     await member.add_roles(role)
+#     await channel.send(embed=embed)
 
 @bot.event
 async def on_message(message):  
@@ -55,12 +63,6 @@ async def on_message(message):
                 await message.delete()
                 await message.channel.send(f"{message.author.mention } such repliks is forbidden, Glory to Ukraine!")
 
-@bot.slash_command(description="If someone will break some rules or will try to crash server, he will get kick", usage="/kick <@user> reason=None")
-@commands.has_permissions(kick_members = True, administrator = True)
-async def kick(ctx, member: disnake.Member, *, reason="Rules broker"):
-    await ctx.send(f"Moderator {ctx.author.mention} kicked user {member.mention}", delete_after=300)
-    await member.kick(reason = reason)
-    await ctx.message.delete()
 
 @bot.slash_command(aliases="БАН НАХУЙ", description="If someone will break some rules or will try to crash server, he will get ban", usage="/ban <@user> reason=None")
 @commands.has_permissions(ban_members = True, administrator = True)

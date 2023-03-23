@@ -43,7 +43,7 @@ async def on_disconnect():
   )
   await channel.send(embed = embed)
 
-@commands.slash_command(name='shutdown', description='Turn off bot')
+@bot.slash_command(name='shutdown', description='Turn off bot')
 @commands.has_permissions(administrator=True, view_audit_log=True)
 async def shutdown(ctx: disnake.ApplicationCommandInteraction):
   channel = bot.get_channel(1085514774537830540)
@@ -59,11 +59,11 @@ async def shutdown(ctx: disnake.ApplicationCommandInteraction):
 
 # Cogs
 bot.load_extension("cogs.ping")  # Note: We did not append the .py extension.
-#bot.load_extension("cogs.tech_help")
-#bot.load_extension("cogs.error_handling")
+bot.load_extension("cogs.tech_help")
+bot.load_extension("cogs.error_handling")
 bot.load_extension("cogs.kick")
 bot.load_extension("cogs.ban")
-#bot.load_extension("cogs.censored")
+bot.load_extension("cogs.censore")
 
 
 bot.run(data["token"])

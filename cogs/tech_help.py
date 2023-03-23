@@ -2,12 +2,13 @@ import disnake
 from disnake.ext import commands
 
 
-class PingCommand(commands.Cog):
-    """This will be for a ping command."""
+class TechHelpCommand(commands.Cog):
+    """This will be for a Tech_Help command."""
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
+    bot = commands.Bot(command_prefix = commands.when_mentioned)
     @commands.slash_command(name="tech_help", description="if you have some problems, use this command")
     async def tech_help(inter: disnake.ApplicationCommandInteraction):
         await inter.response.send_message(
@@ -18,7 +19,7 @@ class PingCommand(commands.Cog):
             ]
         )
 
-    @commands.listen("on_button_click")
+    bot.listen("on_button_click")
     async def help_listener(inter: disnake.MessageInteraction):
         if inter.component.custom_id not in ["yes_help","no_help"]:
             # We filter out any other button presses except
@@ -31,4 +32,4 @@ class PingCommand(commands.Cog):
             await inter.response.send_message("Ok")
 
 def setup(bot: commands.Bot):
-    bot.add_cog(PingCommand(bot))
+    bot.add_cog(TechHelpCommand(bot))

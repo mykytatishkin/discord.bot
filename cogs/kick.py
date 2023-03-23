@@ -3,7 +3,7 @@ from disnake.ext import commands
 
 
 class KickCommand(commands.Cog):
-    """This will be for a ping command."""
+    """This will be for a Kick command."""
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot

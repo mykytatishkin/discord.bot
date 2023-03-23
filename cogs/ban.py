@@ -3,7 +3,7 @@ from disnake.ext import commands
 
 
 class BanCommand(commands.Cog):
-    """This will be for a ping command."""
+    """This will be for a Ban command."""
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot

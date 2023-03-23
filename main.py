@@ -55,7 +55,7 @@ async def shutdown(ctx: disnake.ApplicationCommandInteraction):
       color=0xfc1403
     )
   await channel.send(embed = embed)
-  await commands.close()
+  await bot.close()
 
 # Cogs
 bot.load_extension("cogs.ping")  # Note: We did not append the .py extension.

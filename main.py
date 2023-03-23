@@ -1,3 +1,10 @@
+# RustCamp Clan Bot
+# version: 1.0.0
+# status: pre-realese
+#
+# Creator: @mykytatishkin
+# Helper: @Del37
+
 import json
 import os
 import disnake

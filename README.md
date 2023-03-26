@@ -1,4 +1,4 @@
-# Discord.bot {Syntetix}
+# Discord.bot {Synthetix}
 ![Logo](https://media.discordapp.net/attachments/1030004206951747590/1089352803090190388/waves.gif?width=916&height=916)
 ### Bot made on
 - Python             3.10.6

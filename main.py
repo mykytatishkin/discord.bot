@@ -17,7 +17,6 @@ bot = commands.Bot(command_prefix = commands.when_mentioned, help_command = None
 with open('config.json', 'r') as f:
   data = json.load(f)
 
-
 @bot.event
 async def on_ready():
   channel = bot.get_channel(1085514774537830540)
@@ -29,7 +28,7 @@ async def on_ready():
     color = 0x03fc03
   )
   await channel.send(embed = embed)
-  await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.watching, name="for commands"))
+  await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.watching, name="realese"))
 
 @bot.event
 async def on_disconnect():
@@ -56,6 +55,31 @@ async def shutdown(ctx: disnake.ApplicationCommandInteraction):
     )
   await channel.send(embed = embed)
   await bot.close()
+
+
+@bot.event
+async def on_member_join(member: disnake.Member):
+  channel = bot.get_channel(1030004206528114694)
+
+  embed = disnake.Embed (
+    title=f"New member",
+      description=f"{member.name} joined the server\nID: {member.id}",
+      color=0x3258a8
+    )
+
+  await channel.send(embed = embed)
+
+@bot.event
+async def on_member_remove(member: disnake.Member):
+  channel = bot.get_channel(1030004206528114694)
+
+  embed = disnake.Embed (
+    title=f"Member left",
+      description=f"{member.name} left the server\nID: {member.id}",
+      color=0xa83242
+    )
+
+  await channel.send(embed = embed)
 
 # Cogs
 bot.load_extension("cogs.ping")  # Note: We did not append the .py extension.

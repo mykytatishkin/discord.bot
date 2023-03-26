@@ -1,4 +1,4 @@
-# Discord.bot RustCamp Clan Bot
+# Discord.bot {Syntetix}
 ### Bot made on
 - Python             3.10.6
 - Discord            2.2.2
@@ -25,5 +25,5 @@ Also, you should install Discord, Disnake by pip `pip install discord`, `pip ins
 
 # Usefull links
 
-- [Add bot to your server](https://cutt.ly/rustcampbot)
+- [Add bot to your server](https://cutt.ly/Syntetix)
 - [Bot Server](https://discord.gg/jZPSbdHpNk)

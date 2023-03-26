@@ -1,5 +1,5 @@
 # Discord.bot {Syntetix}
-![Logo](https://media.discordapp.net/attachments/1030004206951747590/1089349983930683504/giphy.gif?width=368&height=368)
+![Logo](https://media.discordapp.net/attachments/1030004206951747590/1089352803090190388/waves.gif?width=916&height=916)
 ### Bot made on
 - Python             3.10.6
 - Discord            2.2.2

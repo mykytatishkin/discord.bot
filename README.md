@@ -1,14 +1,13 @@
 # Discord.bot {Syntetix}
+![Logo](https://media.discordapp.net/attachments/1030004206951747590/1089349983930683504/giphy.gif?width=368&height=368)
 ### Bot made on
 - Python             3.10.6
 - Discord            2.2.2
 - Discord.py         2.2.2
 - Disnake            2.8.1
 
-Bot for Rust Clans to impove their communication and create more comfortable game expirience. 
+Bot for Discord users to impove their communication and create more comfortable game expirience. 
 Also I can describe this bot like all in one, all items for comforting gameplay
-
-![Logo](https://docs.disnake.dev/en/stable/_static/disnake.svg)
 
 # Commands
 - [x] Prefix `.`, so to use commands you should write `.kick`, also you can use `/`.
@@ -19,7 +18,7 @@ Also, you should install Discord, Disnake by pip `pip install discord`, `pip ins
 - [x] Ban
 - [ ] Players Monitoring
 - [ ] Music System
-- [ ] Player Join/Left
+- [x] Player Join/Left
 - [x] Help Command
 - [x] Bot status
 

@@ -21,6 +21,7 @@ Also, you should install Discord, Disnake by pip `pip install discord`, `pip ins
 - [x] Player Join/Left
 - [x] Help Command
 - [x] Bot status
+- [ ] Settings
 
 # Usefull links
 

@@ -17,10 +17,15 @@ bot = commands.Bot(command_prefix = commands.when_mentioned, help_command = None
 with open('config.json', 'r') as f:
   data = json.load(f)
 
+with open('channels.json', 'r') as g:
+  dataChannels = json.load(g)
+
+
 @bot.event
 async def on_ready():
-  channel = bot.get_channel(1085514774537830540)
+  channel = bot.get_channel(dataChannels["statusChannelId"] )
   print(f"{bot.user} is online")
+  
 
   embed = disnake.Embed (
     title = f"🟢 Now online",
@@ -32,7 +37,7 @@ async def on_ready():
 
 @bot.event
 async def on_disconnect():
-  channel = bot.get_channel(1085514774537830540)
+  channel = bot.get_channel(dataChannels["statusChannelId"] )
   print(f"{bot.user} disconnected")
 
   embed = disnake.Embed (
@@ -45,7 +50,7 @@ async def on_disconnect():
 @bot.slash_command(name='shutdown', description='Turn off bot')
 @commands.has_permissions(administrator=True, view_audit_log=True)
 async def shutdown(ctx: disnake.ApplicationCommandInteraction):
-  channel = bot.get_channel(1085514774537830540)
+  channel = bot.get_channel(dataChannels["statusChannelId"] )
   print(f"{bot.user} is offline")
 
   embed = disnake.Embed (
@@ -59,7 +64,7 @@ async def shutdown(ctx: disnake.ApplicationCommandInteraction):
 
 @bot.event
 async def on_member_join(member: disnake.Member):
-  channel = bot.get_channel(1030004206528114694)
+  channel = bot.get_channel(dataChannels["userChannelId"])
 
   embed = disnake.Embed (
     title=f"New member",
@@ -71,7 +76,7 @@ async def on_member_join(member: disnake.Member):
 
 @bot.event
 async def on_member_remove(member: disnake.Member):
-  channel = bot.get_channel(1030004206528114694)
+  channel = bot.get_channel(dataChannels["userChannelId"])
 
   embed = disnake.Embed (
     title=f"Member left",

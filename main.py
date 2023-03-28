@@ -1,6 +1,6 @@
 # RustCamp Clan Bot
 # version: 1.0.0
-# status: pre-realese
+# status: realese
 #
 # Creator: @mykytatishkin
 # Helper: @Del37

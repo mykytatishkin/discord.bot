@@ -23,17 +23,19 @@ bot = commands.Bot(command_prefix = data["prefix"], help_command = None, intents
 
 @bot.slash_command(name="settings", description="You need to setup your channels with correct id to work with them")
 @commands.has_permissions(administrator = True)
-async def settings(ctx, *, statusid):
-  await ctx.send(f"Administrator {ctx.author.mention} set ID for status channel {statusid}", )
+async def settings(ctx, *, statusid, memberid):
+  await ctx.send(f"Administrator {ctx.author.mention} set ID for **status channel** {statusid}", )
+  await ctx.send(f"Administrator {ctx.author.mention} set ID bor **user channel** {memberid}")
   
   # Data saving
   dataChannels.update({"statusChannelId":statusid})
+  dataChannels.update({"memberChannelId":memberid})
   json.dump(dataChannels, open('channels.json','w'))
 
 @bot.event
 async def on_ready():
-  channel = bot.get_channel(dataChannels["statusChannelId"])
-  print(f"{bot.user} is online")
+  idC = dataChannels["statusChannelId"]
+  channel = bot.get_channel(int(idC))
   
 
   embed = disnake.Embed (
@@ -46,7 +48,9 @@ async def on_ready():
 
 @bot.event
 async def on_disconnect():
-  channel = bot.get_channel(dataChannels["statusChannelId"])
+  idC = dataChannels["statusChannelId"]
+  channel = bot.get_channel(int(idC))
+
   print(f"{bot.user} disconnected")
 
   embed = disnake.Embed (
@@ -59,7 +63,9 @@ async def on_disconnect():
 @bot.slash_command(name='shutdown', description='Turn off bot')
 @commands.has_permissions(administrator=True, view_audit_log=True)
 async def shutdown(ctx: disnake.ApplicationCommandInteraction):
-  channel = bot.get_channel(dataChannels["statusChannelId"])
+  idC = dataChannels["statusChannelId"]
+  channel = bot.get_channel(int(idC))
+  
   print(f"{bot.user} is offline")
 
   embed = disnake.Embed (
@@ -73,7 +79,8 @@ async def shutdown(ctx: disnake.ApplicationCommandInteraction):
 
 @bot.event
 async def on_member_join(member: disnake.Member):
-  channel = bot.get_channel(1030004206528114694)
+  idC = dataChannels["memberChannelId"]
+  channel = bot.get_channel(int(idC))
 
   embed = disnake.Embed (
     title=f"New member",
@@ -85,7 +92,8 @@ async def on_member_join(member: disnake.Member):
 
 @bot.event
 async def on_member_remove(member: disnake.Member):
-  channel = bot.get_channel(1030004206528114694)
+  idC = dataChannels["memberChannelId"]
+  channel = bot.get_channel(int(idC))
 
   embed = disnake.Embed (
     title=f"Member left",

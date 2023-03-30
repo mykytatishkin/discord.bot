@@ -34,9 +34,12 @@ async def settings(ctx, *, statusid, memberid):
 
 @bot.event
 async def on_ready():
+
   idC = dataChannels["statusChannelId"]
   channel = bot.get_channel(int(idC))
-  
+
+  print(f"\n\t{bot.user} now online")
+
 
   embed = disnake.Embed (
     title = f"🟢 Now online",
@@ -44,14 +47,14 @@ async def on_ready():
     color = 0x03fc03
   )
   await channel.send(embed = embed)
-  await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.watching, name="realese"))
+  await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.watching, name="1.1"))
 
 @bot.event
 async def on_disconnect():
   idC = dataChannels["statusChannelId"]
   channel = bot.get_channel(int(idC))
 
-  print(f"{bot.user} disconnected")
+  print(f"\n\t{bot.user} disconnected")
 
   embed = disnake.Embed (
     title=f"🟡 Connection Lost",
@@ -66,7 +69,7 @@ async def shutdown(ctx: disnake.ApplicationCommandInteraction):
   idC = dataChannels["statusChannelId"]
   channel = bot.get_channel(int(idC))
   
-  print(f"{bot.user} is offline")
+  print(f"\n\t{bot.user} is offline")
 
   embed = disnake.Embed (
     title=f"🔴 Now offline",
@@ -110,6 +113,7 @@ bot.load_extension("cogs.error_handling")
 bot.load_extension("cogs.kick")
 bot.load_extension("cogs.ban")
 bot.load_extension("cogs.censore")
-
+bot.load_extension("cogs.voting")
+bot.load_extension("cogs.ip")
 
 bot.run(data["token"])

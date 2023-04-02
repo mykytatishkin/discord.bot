@@ -57,9 +57,9 @@ async def on_disconnect():
   print(f"\n\t{bot.user} disconnected")
 
   embed = disnake.Embed (
-    title=f"🟡 Connection Lost",
+    title=f"🔵 Reconnecting",
     description=f"It may be fixed in some time, please contact tech staff.",
-    color=0xfcba03
+    color=0x4287f5
   )
   await channel.send(embed = embed)
 

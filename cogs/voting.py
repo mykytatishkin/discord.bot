@@ -1,15 +1,39 @@
 import disnake
+from discord.ui import Select, View
 from disnake.ext import commands
 
 
 class VotingCommand(commands.Cog):
+    
     """This will be for a ping command."""
     def __init__(self, bot: commands.Bot):
         self.bot = bot
+    
+    bot = commands.Bot(command_prefix = ".")
+    @bot.event
+    async def votefor(self, ctx, inter: disnake.MessageInteraction):
+        
+        select = Select(
+            placeholder="Choose color",
+            options = [
+            disnake.SelectOption(
+                label="Red", description="Your favourite colour is red", emoji="🟥"
+            ),
+            disnake.SelectOption(
+                label="Green", description="Your favourite colour is green", emoji="🟩"
+            ),
+            disnake.SelectOption(
+                label="Blue", description="Your favourite colour is blue", emoji="🟦"
+            ),
+        ])
 
-    @commands.slash_command()
-    async def votefor(self, inter: disnake.ApplicationCommandInteraction):
-       await inter.response.send_message("In development, wait till 1.1")
+        view = View()
+        view.add_item(select)
+        
+        await inter.response.send_message("Choose color: ", view=view)
+
+        
 
 def setup(bot: commands.Bot):
     bot.add_cog(VotingCommand(bot))
+

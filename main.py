@@ -102,7 +102,7 @@ async def on_member_remove(member: disnake.Member):
     title=f"Member left",
       description=f"{member.name} left the server\nID: {member.id}",
       color=0xa83242
-    )
+    ) 
 
   await channel.send(embed = embed)
 
@@ -115,5 +115,6 @@ bot.load_extension("cogs.ban")
 bot.load_extension("cogs.censore")
 bot.load_extension("cogs.voting")
 bot.load_extension("cogs.ip")
+bot.load_extension("cogs.roles")
 
 bot.run(data["token"])

@@ -27,8 +27,10 @@ class TechHelpCommand(commands.Cog):
             return
     
         if inter.component.custom_id == "yes_help":
-            await inter.response.send_message("Contact us at https://discord.gg/jZPSbdHpNk")
+            print("Someone needs help")
+            await inter.response.send_message("Contact <@373151601487118346>")
         elif inter.component.custom_id == "no_help":
+            print("Someone doesnt need help")
             await inter.response.send_message("Ok")
 
 def setup(bot: commands.Bot):

@@ -2,7 +2,7 @@ import disnake
 from discord.ui import Select, View
 from disnake.ext import commands
 
-
+# In development
 class VotingCommand(commands.Cog):
     
     """This will be for a ping command."""

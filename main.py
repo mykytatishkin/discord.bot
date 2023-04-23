@@ -116,5 +116,6 @@ bot.load_extension("cogs.censore")
 bot.load_extension("cogs.voting")
 bot.load_extension("cogs.ip")
 bot.load_extension("cogs.roles")
+bot.load_extension("cogs.message")
 
 bot.run(data["token"])

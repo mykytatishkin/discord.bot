@@ -24,6 +24,9 @@ Also, you should install Discord, Disnake by pip `pip install discord`, `pip ins
 - [x] Settings
 - [x] IP
 - [ ] Dropdown Voting
+- [x] Message
+- [ ] Calc
+- [ ] Roles
 
 # Usefull links
 

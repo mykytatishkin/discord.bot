@@ -117,5 +117,6 @@ bot.load_extension("cogs.voting")
 bot.load_extension("cogs.ip")
 bot.load_extension("cogs.roles")
 bot.load_extension("cogs.message")
+bot.load_extension("cogs.calc")
 
 bot.run(data["token"])

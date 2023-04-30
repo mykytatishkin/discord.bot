@@ -9,7 +9,6 @@ class MessageCommand(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-    
     @commands.has_permissions(administrator = True, manage_channels = True, manage_permissions = True, manage_messages = True)
     @commands.slash_command(description="You can send formatet message to some channel")
     async def message(self, inter: disnake.ApplicationCommandInteraction, title = "New message", your_message = "Your text here", color = 0x4287f5):

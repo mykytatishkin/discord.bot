@@ -4,11 +4,12 @@ from disnake.ext import commands
 
 class ErrorHandling(commands.Cog):
     """This will be for a Error Handling."""
+    bot = commands.Bot(command_prefix = commands.when_mentioned)
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-    bot = commands.Bot(command_prefix = commands.when_mentioned)
+    
     @bot.event
     async def on_command_error(ctx, error):
         print(error)

@@ -4,12 +4,12 @@ from disnake.ext import commands
 
 # In development
 class VotingCommand(commands.Cog):
-    
     """This will be for a ping command."""
+    bot = commands.Bot(command_prefix = commands.when_mentioned)
+
     def __init__(self, bot: commands.Bot):
         self.bot = bot
     
-    bot = commands.Bot(command_prefix = commands.when_mentioned)
     @bot.event
     async def votefor(self, ctx, inter: disnake.MessageInteraction):
         

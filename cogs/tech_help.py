@@ -4,11 +4,11 @@ from disnake.ext import commands
 # In testing
 class TechHelpCommand(commands.Cog):
     """This will be for a Tech_Help command."""
+    bot = commands.Bot(command_prefix = commands.when_mentioned)
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
-
-    bot = commands.Bot(command_prefix = commands.when_mentioned)
+   
     @commands.slash_command(name="tech_help", description="if you have some problems, use this command")
     async def tech_help(inter: disnake.ApplicationCommandInteraction):
         await inter.response.send_message(

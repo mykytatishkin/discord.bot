@@ -5,16 +5,16 @@ from disnake.ext import commands
 
 class CensoreCommand(commands.Cog):
     """This will be for a censore listener."""
+    bot = commands.Bot(command_prefix = commands.when_mentioned)
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-    bot = commands.Bot(command_prefix = commands.when_mentioned)
+
     @bot.event
     async def on_message(message):  
-        bot = commands.Bot(command_prefix = commands.when_mentioned)
         CENSORED_WORDS = ["слава россии", "россия вперед", "россия победит", "хохол", "хохляндия", "украине в срало"]
-        await bot.process_commands(message  )
+        await CensoreCommand.bot.process_commands(message)
 
         for content in message.content.split(","):
             for censured_word in CENSORED_WORDS:

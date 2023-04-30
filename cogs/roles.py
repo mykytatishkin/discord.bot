@@ -4,11 +4,11 @@ from disnake.ext import commands
 # In development
 class RolesCommand(commands.Cog):
     """This will be for a Roles command."""
+    bot = commands.Bot(command_prefix = commands.when_mentioned)
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-    bot = commands.Bot(command_prefix = commands.when_mentioned)
     @commands.slash_command(name="roles", description="if you have some problems, use this command")
     async def roles(inter: disnake.ApplicationCommandInteraction):
         await inter.response.send_message(

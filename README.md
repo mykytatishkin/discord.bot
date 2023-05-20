@@ -14,19 +14,6 @@ Also I can describe this bot like all in one, all items for comforting gameplay
 
 To run bot from your PC, you should replace token with yours and write in console `python3 main.py`.
 Also, you should install Discord, Disnake by pip `pip install discord`, `pip install disnake`
-- [x] Kick 
-- [x] Ban
-- [ ] Players Monitoring
-- [ ] Music System
-- [x] Player Join/Left
-- [x] Help Command
-- [x] Bot status
-- [x] Settings
-- [x] IP
-- [ ] Dropdown Voting
-- [x] Message
-- [x] Calc
-- [ ] Roles
 
 | Status | Feature |
 | :---: | :---: |

@@ -28,6 +28,22 @@ Also, you should install Discord, Disnake by pip `pip install discord`, `pip ins
 - [x] Calc
 - [ ] Roles
 
+| Status | Feature |
+| :---: | :---: |
+| <p style="color:green;"> Realesed </p> | Kick |
+| <p style="color:green"> Realesed </p> | Ban |
+| <p style="color:red"> In Development | Players Monitoring |
+| <p style="color:red"> In Development </p> | Music System |
+| <p style="color:green"> Realesed </p> | Player Join/Left |
+| <p style="color:green"> Realesed </p> | Help Command |
+| <p style="color:green"> Realesed </p> | Bot status |
+| <p style="color:green"> Realesed </p> | Settings |
+| <p style="color:green"> Realesed </p> | IP |
+| <p style="color:yellow"> Debugging </p> | Dropdown Voting |
+| <p style="color:green"> Realesed </p> | Message |
+| <p style="color:green"> Realesed </p> | Calc |
+| <p style="color:yellow"> Debugging </p> | Roles |
+
 # Usefull links
 
 - [Add bot to your server](https://cutt.ly/Syntetix)

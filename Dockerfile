@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN apt-get update && apt-get install -y jq
 
 # Set the bot token as an environment variable
-ENV BOT_TOKEN=MTA4NTQ4NDA2Nzc5OTE3OTI4NA.GCEYDr.IdRxvFJYZCW4P5fBudtgTBj5RnVvGxCYfu_MIg
+ENV BOT_TOKEN=<your_discord_bot_token>
 
 # Expose a TCP port
 EXPOSE 8080

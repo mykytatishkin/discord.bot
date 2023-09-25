@@ -3,11 +3,11 @@ FROM python:3.10-slim
 # Create a working directory for your bot
 WORKDIR /app
 
-# Copy your bot's code and requirements.txt to the container
+# Copy your bot's code, requirements.txt, and config.json to the container
 COPY . /app
 
 # Install any dependencies using pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirments.txt
 
 # Install jq
 RUN apt-get update && apt-get install -y jq

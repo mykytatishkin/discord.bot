@@ -1,27 +1,37 @@
-from discord import BotIntegration
-import disnake
+import re
 from disnake.ext import commands
 
 
 class CensoreCommand(commands.Cog):
-    """This will be for a censore listener."""
-    bot = commands.Bot(command_prefix = commands.when_mentioned)
+    """This will be for a censor listener."""
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-
-    @bot.event
-    async def on_message(message):  
+    @commands.Cog.listener()
+    async def on_ready(self):
         CENSORED_WORDS = ["слава россии", "россия вперед", "россия победит", "хохол", "хохляндия", "украине в срало"]
-        await CensoreCommand.bot.process_commands(message)
 
-        for content in message.content.split(","):
-            for censured_word in CENSORED_WORDS:
-                if content.lower() == censured_word:
-                    await message.delete()
-                    await message.channel.send(f"{message.author.mention } such repliks is forbidden, Glory to Ukraine!")
+        # Перебираем все каналы на сервере
+        for guild in self.bot.guilds:
+            for channel in guild.text_channels:
+                async for message in channel.history(limit=None):
+                    message_text = message.content.lower()
+                    pattern = "|".join(re.escape(word) for word in CENSORED_WORDS)
+                    if re.search(pattern, message_text):
+                        await message.delete()
+                        await message.channel.send(
+                            f"{message.author.mention} such remarks are forbidden, Glory to Ukraine!")
 
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        CENSORED_WORDS = ["слава россии", "россия вперед", "россия победит", "хохол", "хохляндия", "украине в срало"]
+
+        message_text = message.content.lower()
+        pattern = "|".join(re.escape(word) for word in CENSORED_WORDS)
+        if re.search(pattern, message_text):
+            await message.delete()
+            await message.channel.send(f"{message.author.mention} such remarks are forbidden, Glory to Ukraine!")
 
 
 def setup(bot: commands.Bot):

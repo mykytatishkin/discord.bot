@@ -99,7 +99,10 @@ bot.load_extension("cogs.ban")
 bot.load_extension("cogs.censore")
 bot.load_extension("cogs.voting")
 bot.load_extension("cogs.ip")
-bot.load_extension("cogs.roles")
+
+bot.remove_cog("RolesCommand")  # Unload the cog if it's already loaded
+bot.load_extension("cogs.roles")  # Load the cog again
+
 bot.load_extension("cogs.message")
 bot.load_extension("cogs.calc")
 

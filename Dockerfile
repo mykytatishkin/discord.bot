@@ -1,4 +1,3 @@
-# Use the official Python image as the base image
 FROM python:3.10-slim
 
 # Create a working directory for your bot
@@ -8,7 +7,10 @@ WORKDIR /app
 COPY . /app
 
 # Install any dependencies using pip
-# RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Install jq
+RUN apt-get update && apt-get install -y jq
 
 # Set the bot token as an environment variable
 CMD ["sh", "-c", "python your_bot_main_file.py $(cat config.json | jq -r '.token')"]

@@ -1,7 +1,7 @@
 # Discord.bot {Synthetix}
 ![Logo](https://media.discordapp.net/attachments/1030004206951747590/1089352803090190388/waves.gif?width=916&height=916)
 
-<a href="#Technical-information" style="text-align: center; background-color: black; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">Technical Information</a>
+### <a href="#Technical-information" style="text-align: center; background-color: black; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">Technical Information</a>
 
 # Dev Logs
 

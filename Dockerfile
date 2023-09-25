@@ -13,7 +13,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN apt-get update && apt-get install -y jq
 
 # Set the bot token as an environment variable
-CMD ["sh", "-c", "python main.py $(cat config.json | jq -r '.token')"]
+ENV BOT_TOKEN=your_token_here
 
 # Expose a TCP port
 EXPOSE 8080
+
+# Run the bot
+CMD python main.py

@@ -6,7 +6,7 @@
 # Dev Logs
 
 
-### Begining of second generation - [Learn More]()
+### Begining of second generation - [Learn More](https://github.com/mykytatishkin/discord.bot/blob/main/devlog/2023/09%20-%20September/25.md)
 
 
 

@@ -1,4 +1,4 @@
-# RustCamp Clan Bot
+# Synthetix Bot
 # version: 1.1
 # status: pre-realese
 #
@@ -34,7 +34,6 @@ async def settings(ctx, *, statusid, memberid):
 
 @bot.event
 async def on_ready():
-
   idC = dataChannels["statusChannelId"]
   channel = bot.get_channel(int(idC))
 

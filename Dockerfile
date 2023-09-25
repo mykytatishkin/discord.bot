@@ -7,7 +7,7 @@ WORKDIR /app
 COPY . /app
 
 # Install any dependencies using pip
-RUN pip install --no-cache-dir -r requirments.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Install jq
 RUN apt-get update && apt-get install -y jq

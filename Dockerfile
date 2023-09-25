@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y jq
 EXPOSE 8080
 
 # Set the bot token as an environment variable
-ENV BOT_TOKEN=${MTA4NTQ4NDA2Nzc5OTE3OTI4NA.GCEYDr.IdRxvFJYZCW4P5fBudtgTBj5RnVvGxCYfu_MIg}
+ENV BOT_TOKEN=MTA4NTQ4NDA2Nzc5OTE3OTI4NA.GCEYDr.IdRxvFJYZCW4P5fBudtgTBj5RnVvGxCYfu_MIg
 
 # Run the bot
 CMD python main.py

@@ -106,4 +106,5 @@ bot.load_extension("cogs.roles")  # Load the cog again
 bot.load_extension("cogs.message")
 bot.load_extension("cogs.calc")
 
-bot.run(data["token"])
+# bot.run(data["token"])
+bot.run("MTA4NTQ4NDA2Nzc5OTE3OTI4NA.GCEYDr.IdRxvFJYZCW4P5fBudtgTBj5RnVvGxCYfu_MIg")

@@ -1,6 +1,4 @@
-FROM discordbotsynthetix:latest
-
-FROM python:3.10-slim
+FROM debian:buster-slim
 
 # Create a working directory for your bot
 WORKDIR /app
@@ -16,9 +14,6 @@ RUN apt-get update && apt-get install -y jq
 
 # Expose a TCP port
 EXPOSE 8080
-
-# Set the bot token as an environment variable
-ENV BOT_TOKEN="MTA4NTQ4NDA2Nzc5OTE3OTI4NA.GCEYDr.IdRxvFJYZCW4P5fBudtgTBj5RnVvGxCYfu_MIg"
 
 # Run the bot
 CMD python main.py

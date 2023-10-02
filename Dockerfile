@@ -1,3 +1,5 @@
+FROM discordbotsynthetix:latest
+
 FROM python:3.10-slim
 
 # Create a working directory for your bot

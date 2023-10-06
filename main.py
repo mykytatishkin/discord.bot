@@ -10,7 +10,7 @@ with open('config.json', 'r') as f:
 with open('channels.json', 'r') as g:
     channel_data = json.load(g)
 
-# Извлекаем массивы из JSON данных
+# Extracting arrays from JSON data
 status_channel_ids = channel_data.get("statusChannelId", [])
 member_channel_id = channel_data.get("memberChannelId", [])
 
